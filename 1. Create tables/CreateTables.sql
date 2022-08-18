@@ -1,0 +1,81 @@
+CREATE TABLE Users(
+	UserId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	Name NVARCHAR(50) NOT NULL,
+	Password NVARCHAR(50) NOT NULL,
+	IsAdmin BIT NOT NULL DEFAULT(0),
+	-- DataGroups DONE
+	-- Documents DONE
+);
+
+CREATE TABLE DataTypes(
+	DataTypeId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	Value NVARCHAR(40) NOT NULL UNIQUE
+);
+
+CREATE TABLE DataTemplates(
+	DataTemplateId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	Placeholder NVARCHAR(50) NOT NULL,
+	TypeId INT NOT NULL FOREIGN KEY REFERENCES DataTypes(DataTypeId)
+);
+
+CREATE TABLE DataGroupTypes(
+	DataGroupTypeId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	Value NVARCHAR(40) NOT NULL UNIQUE
+);
+
+CREATE TABLE DataGroupTemplates(
+	DataGroupTemplateId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	Name NVARCHAR(50) NOT NULL,
+	DataGroupTypeId INT NOT NULL FOREIGN KEY REFERENCES DataGroupTypes(DataGroupTypeId)
+	-- DataTemplates => DataGroupTemplatesDataTemplates
+);
+
+CREATE TABLE DataGroupTemplatesDataTemplates (
+	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	DataGroupTemplateId INT NOT NULL FOREIGN KEY REFERENCES DataGroupTemplates(DataGroupTemplateId),
+	DataTemplateId INT NOT NULL FOREIGN KEY REFERENCES DataTemplates(DataTemplateId)
+);
+
+CREATE TABLE DataGroups(
+	DataGroupId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	Name NVARCHAR(50) NOT NULL,
+	DataGroupTypeId INT NOT NULL FOREIGN KEY REFERENCES DataGroupTypes(DataGroupTypeId),
+	UserId INT NOT NULL FOREIGN KEY REFERENCES Users(UserId)
+	-- UserData DONE
+);
+
+CREATE TABLE UserData(
+	DataId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	Placeholder NVARCHAR(50) NOT NULL,
+	Value NVARCHAR(50) NOT NULL,
+	TypeId INT NOT NULL FOREIGN KEY REFERENCES DataTypes(DataTypeId),
+	DataGroupId INT NOT NULL FOREIGN KEY REFERENCES DataGroups(DataGroupId)
+);
+
+CREATE TABLE Templates(
+	TemplateId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	Name NVARCHAR(50) NOT NULL,
+	Content NVARCHAR(1500) NOT NULL,
+	-- DataGroupTemplates => TemplatesDataGroupTemplates
+);
+
+CREATE TABLE TemplatesDataGroupTemplates (
+	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	TemplateId INT NOT NULL FOREIGN KEY REFERENCES Templates(TemplateId),
+	DataGroupTemplateId INT NOT NULL FOREIGN KEY REFERENCES DataGroupTemplates(DataGroupTemplateId)
+);
+
+CREATE TABLE Documents(
+	DocumentId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	Name NVARCHAR(50) NOT NULL,
+	Content NVARCHAR(1500) NOT NULL,
+	TemplateId INT NOT NULL FOREIGN KEY REFERENCES Templates(TemplateId),
+	UserId INT NOT NULL FOREIGN KEY REFERENCES Users(UserId)
+	-- DataGroups => DocumentsDataGroups
+);
+
+CREATE TABLE DocumentsDataGroups (
+	Id INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	DocumentId INT NOT NULL FOREIGN KEY REFERENCES Documents(DocumentId),
+	DataGroupId INT NOT NULL FOREIGN KEY REFERENCES DataGroups(DataGroupId)
+);
