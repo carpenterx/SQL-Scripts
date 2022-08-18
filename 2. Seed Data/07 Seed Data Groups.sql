@@ -1,4 +1,4 @@
-INSERT INTO dbo.DataGroups (Name, DataGroupTypeId, UserId)
+INSERT INTO dbo.DataGroups (Name, DataGroupTemplateId, UserId)
      VALUES
            ('Sorin1', 1, 1),
 		   ('Sorin1 Brother', 1, 1),

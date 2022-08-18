@@ -1,4 +1,4 @@
-INSERT INTO dbo.DataTemplates (Placeholder, TypeId)
+INSERT INTO dbo.DataTemplates (Placeholder, DataTypeId)
      VALUES
            ('FirstName', 1),
 		   ('LastName', 1),

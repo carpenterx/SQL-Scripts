@@ -15,7 +15,7 @@ CREATE TABLE DataTypes(
 CREATE TABLE DataTemplates(
 	DataTemplateId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	Placeholder NVARCHAR(50) NOT NULL,
-	TypeId INT NOT NULL FOREIGN KEY REFERENCES DataTypes(DataTypeId)
+	DataTypeId INT NOT NULL FOREIGN KEY REFERENCES DataTypes(DataTypeId)
 );
 
 CREATE TABLE DataGroupTypes(
@@ -39,7 +39,7 @@ CREATE TABLE DataGroupTemplatesDataTemplates (
 CREATE TABLE DataGroups(
 	DataGroupId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	Name NVARCHAR(50) NOT NULL,
-	DataGroupTypeId INT NOT NULL FOREIGN KEY REFERENCES DataGroupTypes(DataGroupTypeId),
+	DataGroupTemplateId INT NOT NULL FOREIGN KEY REFERENCES DataGroupTemplates(DataGroupTemplateId),
 	UserId INT NOT NULL FOREIGN KEY REFERENCES Users(UserId)
 	-- UserData DONE
 );
@@ -48,7 +48,7 @@ CREATE TABLE UserData(
 	DataId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
 	Placeholder NVARCHAR(50) NOT NULL,
 	Value NVARCHAR(50) NOT NULL,
-	TypeId INT NOT NULL FOREIGN KEY REFERENCES DataTypes(DataTypeId),
+	DataTemplateId INT NOT NULL FOREIGN KEY REFERENCES DataTemplates(DataTemplateId),
 	DataGroupId INT NOT NULL FOREIGN KEY REFERENCES DataGroups(DataGroupId)
 );
 
