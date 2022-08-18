@@ -46,7 +46,6 @@ CREATE TABLE DataGroups(
 
 CREATE TABLE UserData(
 	DataId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	Placeholder NVARCHAR(50) NOT NULL,
 	Value NVARCHAR(50) NOT NULL,
 	DataTemplateId INT NOT NULL FOREIGN KEY REFERENCES DataTemplates(DataTemplateId),
 	DataGroupId INT NOT NULL FOREIGN KEY REFERENCES DataGroups(DataGroupId)
@@ -54,7 +53,7 @@ CREATE TABLE UserData(
 
 CREATE TABLE Templates(
 	TemplateId INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
-	Name NVARCHAR(50) NOT NULL,
+	Name NVARCHAR(250) NOT NULL,
 	Content NVARCHAR(1500) NOT NULL,
 	-- DataGroupTemplates => TemplatesDataGroupTemplates
 );
