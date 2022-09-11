@@ -304,3 +304,105 @@ INSERT INTO dbo.Templates (Id, Name, Content)
 		   (@Cerere8TemplateGuid, 'Cerere 8', 'Cerere 8 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a [Person.FirstName] [Person.LastName], e-mail [Contact.Email], numar de\ntelefon [Contact.PhoneNumber], solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\n[Person.FirstName] [Person.LastName]\n\nData {DateTime.Today}							Semnatura'),
 		   (@Cerere9TemplateGuid, 'Cerere 9', 'Cerere 9 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a [Person.FirstName] [Person.LastName], e-mail [Contact.Email], numar de\ntelefon [Contact.PhoneNumber], solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\n[Person.FirstName] [Person.LastName]\n\nData {DateTime.Today}							Semnatura'),
 		   (@Cerere10TemplateGuid, 'Cerere 10', 'Cerere 10 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a [Person.FirstName] [Person.LastName], e-mail [Contact.Email], numar de\ntelefon [Contact.PhoneNumber], solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\n[Person.FirstName] [Person.LastName]\n\nData {DateTime.Today}							Semnatura');
+
+DECLARE @PersonAliasTemplateGuid UNIQUEIDENTIFIER;
+    SET @PersonAliasTemplateGuid = NEWID();
+
+DECLARE @ContactAliasTemplateGuid UNIQUEIDENTIFIER;
+    SET @ContactAliasTemplateGuid = NEWID();
+
+INSERT INTO dbo.AliasTemplates (Id, Name, DataGroupTemplateId)
+    VALUES
+        (@PersonAliasTemplateGuid, 'Person', @PersonDataGroupTemplateGuid),
+        (@ContactAliasTemplateGuid, 'Contact', @ContactInformationDataGroupTemplateGuid);
+
+INSERT INTO dbo.AliasTemplateTemplate (AliasTemplatesId, TemplatesId)
+    VALUES
+        (@PersonAliasTemplateGuid, @Cerere1TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere1TemplateGuid),
+        (@PersonAliasTemplateGuid, @Cerere2TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere2TemplateGuid),
+        (@PersonAliasTemplateGuid, @Cerere3TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere3TemplateGuid),
+        (@PersonAliasTemplateGuid, @Cerere4TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere4TemplateGuid),
+        (@PersonAliasTemplateGuid, @Cerere5TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere5TemplateGuid),
+        (@PersonAliasTemplateGuid, @Cerere6TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere6TemplateGuid),
+        (@PersonAliasTemplateGuid, @Cerere7TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere7TemplateGuid),
+        (@PersonAliasTemplateGuid, @Cerere8TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere8TemplateGuid),
+        (@PersonAliasTemplateGuid, @Cerere9TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere9TemplateGuid),
+        (@PersonAliasTemplateGuid, @Cerere10TemplateGuid),
+        (@ContactAliasTemplateGuid, @Cerere10TemplateGuid);
+
+DECLARE @CerereADocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereADocumentGuid = NEWID();
+
+DECLARE @CerereBDocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereBDocumentGuid = NEWID();
+
+DECLARE @CerereCDocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereCDocumentGuid = NEWID();
+
+DECLARE @CerereDDocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereDDocumentGuid = NEWID();
+
+DECLARE @CerereEDocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereEDocumentGuid = NEWID();
+
+DECLARE @CerereA3DocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereA3DocumentGuid = NEWID();
+
+DECLARE @CerereB3DocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereB3DocumentGuid = NEWID();
+
+DECLARE @CerereC3DocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereC3DocumentGuid = NEWID();
+
+DECLARE @CerereD7DocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereD7DocumentGuid = NEWID();
+
+DECLARE @CerereE7DocumentGuid UNIQUEIDENTIFIER;
+    SET @CerereE7DocumentGuid = NEWID();
+
+INSERT INTO dbo.Documents
+           (Id, Name, Content, TemplateId)
+     VALUES
+           (@CerereADocumentGuid, 'Cerere A', 'Cerere 1 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin1 Iordache1, e-mail sorin1@email.com, numar de\ntelefon 123456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin1 Iordache1\n\nData {DateTime.Today}							Semnatura', @Cerere1TemplateGuid),
+		   (@CerereBDocumentGuid, 'Cerere B', 'Cerere 2 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin1 Iordache1, e-mail sorin1@email.com, numar de\ntelefon 123456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin1 Iordache1\n\nData {DateTime.Today}							Semnatura', @Cerere2TemplateGuid),
+		   (@CerereCDocumentGuid, 'Cerere C', 'Cerere 3 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin1 Iordache1, e-mail sorin1@email.com, numar de\ntelefon 123456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin1 Iordache1\n\nData {DateTime.Today}							Semnatura', @Cerere3TemplateGuid),
+		   (@CerereDDocumentGuid, 'Cerere D', 'Cerere 4 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin1 Iordache1, e-mail sorin1@email.com, numar de\ntelefon 123456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin1 Iordache1\n\nData {DateTime.Today}							Semnatura', @Cerere4TemplateGuid),
+		   (@CerereEDocumentGuid, 'Cerere E', 'Cerere 5 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin1 Iordache1, e-mail sorin1@email.com, numar de\ntelefon 123456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin1 Iordache1\n\nData {DateTime.Today}							Semnatura', @Cerere5TemplateGuid),
+		   (@CerereA3DocumentGuid, 'Cerere A3', 'Cerere 1 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin3 Iordache3, e-mail sorin3@email.com, numar de\ntelefon 323456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin3 Iordache3\n\nData {DateTime.Today}							Semnatura', @Cerere1TemplateGuid),
+		   (@CerereB3DocumentGuid, 'Cerere B3', 'Cerere 2 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin3 Iordache3, e-mail sorin3@email.com, numar de\ntelefon 323456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin3 Iordache3\n\nData {DateTime.Today}							Semnatura', @Cerere2TemplateGuid),
+		   (@CerereC3DocumentGuid, 'Cerere C3', 'Cerere 3 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin3 Iordache3, e-mail sorin3@email.com, numar de\ntelefon 323456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin3 Iordache3\n\nData {DateTime.Today}							Semnatura', @Cerere3TemplateGuid),
+		   (@CerereD7DocumentGuid, 'Cerere D7', 'Cerere 4 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin7 Iordache7, e-mail sorin7@email.com, numar de\ntelefon 723456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin7 Iordache7\n\nData {DateTime.Today}							Semnatura', @Cerere4TemplateGuid),
+		   (@CerereE7DocumentGuid, 'Cerere E7', 'Cerere 5 Alocare Credentiale Pentru Plata Impozitelor Si Taxelor Locale Pentru Persoane Fizice\n\nSubsemnatul/a Sorin7 Iordache7, e-mail sorin7@email.com, numar de\ntelefon 723456789, solicit a-mi fi atribuit credential in\nvederea platii prin www.ghiseul.ro\n	- Sunt de acord ca orice corespondenta sa fie expediata doar pe adresa\nde e-mail mai sus mentionata sau telefonic;\n	- Ridicarea credentialului se va face personal sau prin mandatar, daca\nnu este comunicat la adresa de e-mail mai sus mentionata;\n	- Plata se va efectua doar prin intermediul unui card bancar;\n	- Atasez la prezenta cerere, copie a actului de identitate a numitului/ei\nSorin7 Iordache7\n\nData {DateTime.Today}							Semnatura', @Cerere5TemplateGuid);
+
+INSERT INTO dbo.Aliases
+    (Id, AliasTemplateId, DataGroupId, DocumentId)
+        VALUES
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin1DataGroupGuid, @CerereADocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin1ContactDataGroupGuid, @CerereADocumentGuid),
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin1DataGroupGuid, @CerereBDocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin1ContactDataGroupGuid, @CerereBDocumentGuid),
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin1DataGroupGuid, @CerereCDocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin1ContactDataGroupGuid, @CerereCDocumentGuid),
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin1DataGroupGuid, @CerereDDocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin1ContactDataGroupGuid, @CerereDDocumentGuid),
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin1DataGroupGuid, @CerereEDocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin1ContactDataGroupGuid, @CerereEDocumentGuid),
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin3DataGroupGuid, @CerereA3DocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin3ContactDataGroupGuid, @CerereA3DocumentGuid),
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin3DataGroupGuid, @CerereB3DocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin3ContactDataGroupGuid, @CerereB3DocumentGuid),
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin3DataGroupGuid, @CerereC3DocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin3ContactDataGroupGuid, @CerereC3DocumentGuid),
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin7DataGroupGuid, @CerereD7DocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin7ContactDataGroupGuid, @CerereD7DocumentGuid),
+            (NEWID(), @PersonAliasTemplateGuid, @Sorin7DataGroupGuid, @CerereE7DocumentGuid),
+            (NEWID(), @ContactAliasTemplateGuid, @Sorin7ContactDataGroupGuid, @CerereE7DocumentGuid);
