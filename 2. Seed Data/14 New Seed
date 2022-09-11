@@ -1,0 +1,188 @@
+DECLARE @TextDataTypeGuid UNIQUEIDENTIFIER;
+    SET @TextDataTypeGuid = NEWID();
+
+DECLARE @EmailDataTypeGuid UNIQUEIDENTIFIER;
+    SET @EmailDataTypeGuid = NEWID();
+
+DECLARE @PhoneDataTypeGuid UNIQUEIDENTIFIER;
+    SET @PhoneDataTypeGuid = NEWID();
+
+DECLARE @CNPDataTypeGuid UNIQUEIDENTIFIER;
+    SET @CNPDataTypeGuid = NEWID();
+
+DECLARE @DateDataTypeGuid UNIQUEIDENTIFIER;
+    SET @DateDataTypeGuid = NEWID();
+
+DECLARE @PostalCodeDataTypeGuid UNIQUEIDENTIFIER;
+    SET @PostalCodeDataTypeGuid = NEWID();
+
+DECLARE @CreditCardDataTypeGuid UNIQUEIDENTIFIER;
+    SET @CreditCardDataTypeGuid = NEWID();
+
+DECLARE @TravelIDDataTypeGuid UNIQUEIDENTIFIER;
+    SET @TravelIDDataTypeGuid = NEWID();
+
+DECLARE @MaritalStatusDataTypeGuid UNIQUEIDENTIFIER;
+    SET @MaritalStatusDataTypeGuid = NEWID();
+
+DECLARE @StreetNameDataTypeGuid UNIQUEIDENTIFIER;
+    SET @StreetNameDataTypeGuid = NEWID();
+
+DECLARE @CountryCodeDataTypeGuid UNIQUEIDENTIFIER;
+    SET @CountryCodeDataTypeGuid = NEWID();
+
+INSERT INTO dbo.DataTypes (Id, Value)
+    VALUES
+        (@TextDataTypeGuid, 'Text'),
+        (@EmailDataTypeGuid, 'Email'),
+        (@PhoneDataTypeGuid, 'Phone'),
+        (@CNPDataTypeGuid, 'CNP'),
+        (@DateDataTypeGuid, 'Date'),
+        (@PostalCodeDataTypeGuid, 'PostalCode'),
+        (@CreditCardDataTypeGuid, 'CreditCard'),
+        (@TravelIDDataTypeGuid, 'TravelID'),
+        (@MaritalStatusDataTypeGuid, 'MaritalStatus'),
+        (@StreetNameDataTypeGuid, 'StreetName'),
+        (@CountryCodeDataTypeGuid, 'CountryCode');
+
+DECLARE @FirstNameDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @FirstNameDataTemplateGuid = NEWID();
+
+DECLARE @LastNameDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @LastNameDataTemplateGuid = NEWID();
+
+DECLARE @EmailDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @EmailDataTemplateGuid = NEWID();
+
+DECLARE @PhoneNumberDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @PhoneNumberDataTemplateGuid = NEWID();
+
+DECLARE @CNPDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @CNPDataTemplateGuid = NEWID();
+
+DECLARE @DateOfBirthDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @DateOfBirthDataTemplateGuid = NEWID();
+
+DECLARE @CountryCodeDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @CountryCodeDataTemplateGuid = NEWID();
+
+DECLARE @PostalCodeDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @PostalCodeDataTemplateGuid = NEWID();
+
+DECLARE @StreetNameDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @StreetNameDataTemplateGuid = NEWID();
+
+DECLARE @CreditCardNumberDataTemplateGuid UNIQUEIDENTIFIER;
+    SET @CreditCardNumberDataTemplateGuid = NEWID();
+
+INSERT INTO dbo.DataTemplates (Id, Placeholder, DataTypeId)
+    VALUES
+        (@FirstNameDataTemplateGuid, 'FirstName', @TextDataTypeGuid),
+        (@LastNameDataTemplateGuid, 'LastName', @TextDataTypeGuid),
+        (@EmailDataTemplateGuid, 'Email', @EmailDataTypeGuid),
+        (@PhoneNumberDataTemplateGuid, 'PhoneNumber', @PhoneDataTypeGuid),
+        (@CNPDataTemplateGuid, 'CNP', @CNPDataTypeGuid),
+        (@DateOfBirthDataTemplateGuid, 'DateOfBirth', @DateDataTypeGuid),
+        (@CountryCodeDataTemplateGuid, 'CountryCode', @CountryCodeDataTypeGuid),
+        (@PostalCodeDataTemplateGuid, 'PostalCode', @PostalCodeDataTypeGuid),
+        (@StreetNameDataTemplateGuid, 'StreetName', @StreetNameDataTypeGuid),
+        (@CreditCardNumberDataTemplateGuid, 'CreditCardNumber', @CreditCardDataTypeGuid);
+
+DECLARE @PersonDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @PersonDataGroupTypeGuid = NEWID();
+
+DECLARE @ContactInformationDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @ContactInformationDataGroupTypeGuid = NEWID();
+
+DECLARE @PaymentInformationDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @PaymentInformationDataGroupTypeGuid = NEWID();
+
+DECLARE @AddressDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @AddressDataGroupTypeGuid = NEWID();
+
+DECLARE @CompanyDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @CompanyDataGroupTypeGuid = NEWID();
+
+DECLARE @LocationDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @LocationDataGroupTypeGuid = NEWID();
+
+DECLARE @WorkExperienceDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @WorkExperienceDataGroupTypeGuid = NEWID();
+
+DECLARE @EducationDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @EducationDataGroupTypeGuid = NEWID();
+
+DECLARE @ResidenceDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @ResidenceDataGroupTypeGuid = NEWID();
+
+DECLARE @VehicleDataGroupTypeGuid UNIQUEIDENTIFIER;
+    SET @VehicleDataGroupTypeGuid = NEWID();
+
+INSERT INTO dbo.DataGroupTypes (Id, Value)
+     VALUES
+           (@PersonDataGroupTypeGuid, 'Person'),
+		   (@ContactInformationDataGroupTypeGuid, 'ContactInformation'),
+		   (@PaymentInformationDataGroupTypeGuid, 'PaymentInformation'),
+		   (@AddressDataGroupTypeGuid, 'Address'),
+		   (@CompanyDataGroupTypeGuid, 'Company'),
+		   (@LocationDataGroupTypeGuid, 'Location'),
+		   (@WorkExperienceDataGroupTypeGuid, 'WorkExperience'),
+		   (@EducationDataGroupTypeGuid, 'Education'),
+		   (@ResidenceDataGroupTypeGuid, 'Residence'),
+		   (@VehicleDataGroupTypeGuid, 'Vehicle');
+
+DECLARE @PersonDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @PersonDataGroupTemplateGuid = NEWID();
+
+DECLARE @ContactInformationDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @ContactInformationDataGroupTemplateGuid = NEWID();
+
+DECLARE @PaymentInformationDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @PaymentInformationDataGroupTemplateGuid = NEWID();
+
+DECLARE @AddressDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @AddressDataGroupTemplateGuid = NEWID();
+
+DECLARE @CompanyDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @CompanyDataGroupTemplateGuid = NEWID();
+
+DECLARE @LocationDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @LocationDataGroupTemplateGuid = NEWID();
+
+DECLARE @WorkExperienceDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @WorkExperienceDataGroupTemplateGuid = NEWID();
+
+DECLARE @EducationDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @EducationDataGroupTemplateGuid = NEWID();
+
+DECLARE @ResidenceDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @ResidenceDataGroupTemplateGuid = NEWID();
+
+DECLARE @VehicleDataGroupTemplateGuid UNIQUEIDENTIFIER;
+    SET @VehicleDataGroupTemplateGuid = NEWID();
+
+INSERT INTO dbo.DataGroupTemplates (Id, DataGroupTypeId)
+     VALUES
+           (@PersonDataGroupTemplateGuid, @PersonDataGroupTypeGuid),
+		   (@ContactInformationDataGroupTemplateGuid, @ContactInformationDataGroupTypeGuid),
+		   (@PaymentInformationDataGroupTemplateGuid, @PaymentInformationDataGroupTypeGuid),
+		   (@AddressDataGroupTemplateGuid, @AddressDataGroupTypeGuid),
+		   (@CompanyDataGroupTemplateGuid, @CompanyDataGroupTypeGuid),
+		   (@LocationDataGroupTemplateGuid, @LocationDataGroupTypeGuid),
+		   (@WorkExperienceDataGroupTemplateGuid, @WorkExperienceDataGroupTypeGuid),
+		   (@EducationDataGroupTemplateGuid, @EducationDataGroupTypeGuid),
+		   (@ResidenceDataGroupTemplateGuid, @ResidenceDataGroupTypeGuid),
+		   (@VehicleDataGroupTemplateGuid, @VehicleDataGroupTypeGuid);
+
+INSERT INTO dbo.DataGroupTemplateDataTemplate (DataGroupTemplatesId, DataTemplatesId)
+     VALUES
+           (@PersonDataGroupTemplateGuid, @FirstNameDataTemplateGuid),
+		   (@PersonDataGroupTemplateGuid, @LastNameDataTemplateGuid),
+		   (@PersonDataGroupTemplateGuid, @CNPDataTemplateGuid),
+		   (@PersonDataGroupTemplateGuid, @DateOfBirthDataTemplateGuid),
+		   (@ContactInformationDataGroupTemplateGuid, @EmailDataTemplateGuid),
+		   (@ContactInformationDataGroupTemplateGuid, @PhoneNumberDataTemplateGuid),
+		   (@AddressDataGroupTemplateGuid, @CountryCodeDataTemplateGuid),
+		   (@AddressDataGroupTemplateGuid, @PostalCodeDataTemplateGuid),
+		   (@AddressDataGroupTemplateGuid, @StreetNameDataTemplateGuid),
+		   (@PaymentInformationDataGroupTemplateGuid, @CreditCardNumberDataTemplateGuid);
