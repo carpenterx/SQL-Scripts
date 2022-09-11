@@ -186,3 +186,79 @@ INSERT INTO dbo.DataGroupTemplateDataTemplate (DataGroupTemplatesId, DataTemplat
 		   (@AddressDataGroupTemplateGuid, @PostalCodeDataTemplateGuid),
 		   (@AddressDataGroupTemplateGuid, @StreetNameDataTemplateGuid),
 		   (@PaymentInformationDataGroupTemplateGuid, @CreditCardNumberDataTemplateGuid);
+
+DECLARE @Sorin1DataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin1DataGroupGuid = NEWID();
+
+DECLARE @Sorin1BrotherDataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin1BrotherDataGroupGuid = NEWID();
+
+DECLARE @Sorin1SisterDataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin1SisterDataGroupGuid = NEWID();
+
+DECLARE @Sorin1ContactDataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin1ContactDataGroupGuid = NEWID();
+
+DECLARE @Sorin1PaymentDataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin1PaymentDataGroupGuid = NEWID();
+
+DECLARE @Sorin1AddressDataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin1AddressDataGroupGuid = NEWID();
+
+DECLARE @Sorin3DataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin3DataGroupGuid = NEWID();
+
+DECLARE @Sorin3ContactDataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin3ContactDataGroupGuid = NEWID();
+
+DECLARE @Sorin7DataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin7DataGroupGuid = NEWID();
+
+DECLARE @Sorin7ContactDataGroupGuid UNIQUEIDENTIFIER;
+    SET @Sorin7ContactDataGroupGuid = NEWID();
+
+INSERT INTO dbo.DataGroups (Id, Name, DataGroupTemplateId)
+     VALUES
+           (@Sorin1DataGroupGuid, 'Sorin1', @PersonDataGroupTemplateGuid),
+		   (@Sorin1BrotherDataGroupGuid, 'Sorin1 Brother', @PersonDataGroupTemplateGuid),
+		   (@Sorin1SisterDataGroupGuid, 'Sorin1 Sister', @PersonDataGroupTemplateGuid),
+		   (@Sorin1ContactDataGroupGuid, 'Sorin1 Contact', @ContactInformationDataGroupTemplateGuid),
+		   (@Sorin1PaymentDataGroupGuid, 'Sorin1 Payment', @PaymentInformationDataGroupTemplateGuid),
+		   (@Sorin1AddressDataGroupGuid, 'Sorin1 Address', @AddressDataGroupTemplateGuid),
+		   (@Sorin3DataGroupGuid, 'Sorin3', @PersonDataGroupTemplateGuid),
+		   (@Sorin3ContactDataGroupGuid, 'Sorin3 Contact', @ContactInformationDataGroupTemplateGuid),
+		   (@Sorin7DataGroupGuid, 'Sorin7', @PersonDataGroupTemplateGuid),
+		   (@Sorin7ContactDataGroupGuid, 'Sorin7 Contact', @ContactInformationDataGroupTemplateGuid);
+
+INSERT INTO dbo.UserData (Id, Value, DataGroupId, DataTemplateId)
+     VALUES
+           (NEWID(), 'Sorin1', @Sorin1DataGroupGuid, @FirstNameDataTemplateGuid),
+		   (NEWID(), 'Iordache1', @Sorin1DataGroupGuid, @LastNameDataTemplateGuid),
+		   (NEWID(), 'SI1CNP123456', @Sorin1DataGroupGuid, @CNPDataTemplateGuid),
+		   (NEWID(), '1986-01-08', @Sorin1DataGroupGuid, @DateOfBirthDataTemplateGuid),
+		   (NEWID(), 'Sorin1Brother', @Sorin1BrotherDataGroupGuid, @FirstNameDataTemplateGuid),
+		   (NEWID(), 'Iordache1', @Sorin1BrotherDataGroupGuid, @LastNameDataTemplateGuid),
+		   (NEWID(), 'SI1BCNP12345', @Sorin1BrotherDataGroupGuid, @CNPDataTemplateGuid),
+		   (NEWID(), '1984-02-12', @Sorin1BrotherDataGroupGuid, @DateOfBirthDataTemplateGuid),
+		   (NEWID(), 'Sorin1Sister', @Sorin1SisterDataGroupGuid, @FirstNameDataTemplateGuid),
+		   (NEWID(), 'Iordache1', @Sorin1SisterDataGroupGuid, @LastNameDataTemplateGuid),
+		   (NEWID(), 'SI1SCNP12345', @Sorin1SisterDataGroupGuid, @CNPDataTemplateGuid),
+		   (NEWID(), '1996-02-02', @Sorin1SisterDataGroupGuid, @DateOfBirthDataTemplateGuid),
+		   (NEWID(), 'sorin1@email.com', @Sorin1ContactDataGroupGuid, @EmailDataTemplateGuid),
+		   (NEWID(), '123456789', @Sorin1ContactDataGroupGuid, @PhoneNumberDataTemplateGuid),
+		   (NEWID(), '0000-0000-0000-0000', @Sorin1PaymentDataGroupGuid, @CreditCardNumberDataTemplateGuid),
+		   (NEWID(), '90810', @Sorin1AddressDataGroupGuid, @PostalCodeDataTemplateGuid),
+		   (NEWID(), 'Str Stefan Cel Mare', @Sorin1AddressDataGroupGuid, @StreetNameDataTemplateGuid),
+		   (NEWID(), 'Sorin3', @Sorin3DataGroupGuid, @FirstNameDataTemplateGuid),
+		   (NEWID(), 'Iordache3', @Sorin3DataGroupGuid, @LastNameDataTemplateGuid),
+		   (NEWID(), 'SI3CNP123456', @Sorin3DataGroupGuid, @CNPDataTemplateGuid),
+		   (NEWID(), '1986-01-08', @Sorin3DataGroupGuid, @DateOfBirthDataTemplateGuid),
+		   (NEWID(), 'sorin3@email.com', @Sorin3ContactDataGroupGuid, @EmailDataTemplateGuid),
+		   (NEWID(), '323456789', @Sorin3ContactDataGroupGuid, @PhoneNumberDataTemplateGuid),
+		   (NEWID(), 'Sorin7', @Sorin7DataGroupGuid, @FirstNameDataTemplateGuid),
+		   (NEWID(), 'Iordache7', @Sorin7DataGroupGuid, @LastNameDataTemplateGuid),
+		   (NEWID(), 'SI7CNP123456', @Sorin7DataGroupGuid, @CNPDataTemplateGuid),
+		   (NEWID(), '1986-01-08', @Sorin7DataGroupGuid, @DateOfBirthDataTemplateGuid),
+		   (NEWID(), 'sorin7@email.com', @Sorin7ContactDataGroupGuid, @EmailDataTemplateGuid),
+		   (NEWID(), '723456789', @Sorin7ContactDataGroupGuid, @PhoneNumberDataTemplateGuid);
+
