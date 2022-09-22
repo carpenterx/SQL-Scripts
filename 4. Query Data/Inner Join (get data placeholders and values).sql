@@ -1,13 +1,18 @@
-SELECT Documents.Id as DocumentId, DataGroups.Id as DataGroupId, DataGroups.Name as DataGroupName, CONCAT('[', DataGroupTemplates.Name, '.', DataTemplates.Placeholder, ']') as Placeholder, UserData.Value as UserDataValue
+SELECT 
+	Documents.Id as DocumentId,
+	Documents.Name,
+	DataGroups.Name as DataGroupName,
+	CONCAT('[', AliasTemplates.Name, '.', DataTemplates.Placeholder, ']') as Placeholder,
+	UserData.Value as UserDataValue
 FROM Documents
-INNER JOIN DataGroupDocument
-ON Documents.Id = DataGroupDocument.DocumentsId
+INNER JOIN Aliases
+ON Aliases.DocumentId = Documents.Id
+INNER JOIN AliasTemplates
+ON Aliases.AliasTemplateId = AliasTemplates.Id
 INNER JOIN DataGroups
-ON DataGroupDocument.DataGroupsId = DataGroups.Id
+ON Aliases.DataGroupId = DataGroups.Id
 INNER JOIN UserData
-ON UserData.DataGroupId = DataGroups.Id
+ON UserData.DataGroupId = Aliases.DataGroupId
 INNER JOIN DataTemplates
-ON UserData.DataTemplateId = DataTemplates.Id
-INNER JOIN DataGroupTemplates
-ON DataGroups.DataGroupTemplateId = DataGroupTemplates.Id
-WHERE Documents.Id = '018B6FB1-17E0-4F7E-A301-08DA8B79C3B7'
+ON DataTemplates.Id = UserData.DataTemplateId
+WHERE Documents.Id = 'F47B75E5-4B86-4EBD-811F-0F32B2FB6A05'
